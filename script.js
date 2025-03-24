@@ -9,7 +9,7 @@ const EVENT_CONFIG = {
     '2025-04-10': 'Day 4.jpg',
     '2025-04-11': 'Day 5.jpg',
   },
-  defaultImage: 'Day 2.jpg' // Fallback image in case of failure
+  defaultImage: 'Comming soon message.jpg' // Fallback image in case of failure
 };
 
 // Elements

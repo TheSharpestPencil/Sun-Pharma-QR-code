@@ -1,9 +1,4 @@
 /* Core Mobile Optimization */
-html {
-  box-sizing: border-box;
-  touch-action: manipulation; /* Disable double-tap zoom */
-  -webkit-text-size-adjust: 100%; /* Prevent font scaling */
-}
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -65,56 +60,4 @@ body {
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
            env(safe-area-inset-bottom) env(safe-area-inset-left); /* Notch support */
   touch-action: pan-y; /* Allow vertical scrolling only */
-}
-
-/* Mobile Orientation Handling */
-@media screen and (orientation: portrait) {
-  #event-image {
-    max-width: 100vw;
-    max-height: 80vh; /* Prevent bottom browser bar overlap */
-  }
-}
-
-@media screen and (orientation: landscape) {
-  #event-image {
-    max-height: 90vh;
-    max-width: 90vw;
-  }
-}
-
-/* Touch Device Enhancements */
-@media (pointer: coarse) {
-  #agenda-container {
-    scroll-snap-type: y mandatory;
-  }
-  
-  #agenda-image {
-    scroll-snap-align: start;
-  }
-}
-
-/* Mobile Performance Tweaks */
-.mobile-optimize {
-  backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-/* Battery Saving Mode */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
-/* Low Data Mode Adaptation */
-@media (prefers-reduced-data: reduce) {
-  #event-image {
-    background-image: url('low-res-placeholder.jpg');
-  }
-  
-  [data-src] {
-    content-visibility: auto;
-  }
 }

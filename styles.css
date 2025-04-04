@@ -1,54 +1,37 @@
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* Keep background black */
+  background-color: #000; /* Keep the background black */
   overflow: hidden;
-  height: 100vh; /* Full height of the viewport */
-  width: 100vw; /* Full width of the viewport */
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Regular Image Slideshow */
 #image-container {
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  width: 100%; /* Full width of the screen */
-  height: 100%; /* Full height of the screen */
-  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative; /* To hold images in the same position */
 }
 
 #event-image {
-  width: 100%; /* Always take full width of the screen */
-  height: auto; /* Adjust height to maintain aspect ratio */
-  max-width: 1080px; /* Limit the maximum width to 1080px */
-  max-height: 1920px; /* Limit the maximum height to 1920px */
-  object-fit: contain; /* Ensure the image stays contained within the box */
-  transition: opacity 0.5s ease;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 1;  /* Initially visible */
+  position: absolute; /* Keep the images stacked on top of each other */
+  transition: opacity 0.5s ease; /* Apply the fade effect */
 }
 
-/* Agenda Section */
-#agenda-container {
-  display: none; /* Hidden initially */
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto; /* Allow vertical scrolling */
-  text-align: center;
-  background-color: black;
-}
-
-#agenda-image {
-  max-width: 100%; /* Fit width */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* Mobile Optimization */
-@media screen and (max-width: 1080x) {
+/* Mobile-first approach for smartphones */
+@media screen and (max-width: 768px) {
   #event-image {
-    width: 100%; /* Full width on smaller devices */
-    height: auto; /* Auto-adjust height */
+    width: 100%;
+    height: auto;
   }
 }

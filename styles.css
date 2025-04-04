@@ -1,3 +1,35 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Keep background black */
+  overflow: hidden;
+  height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+/* Regular Image Slideshow */
+#image-container {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  width: 100%; /* Full width of the screen */
+  height: 100%; /* Full height of the screen */
+  position: absolute;
+}
+
+#event-image {
+  width: 100%; /* Always take full width of the screen */
+  height: auto; /* Adjust height to maintain aspect ratio */
+  max-width: 1080px; /* Limit the maximum width to 1080px */
+  max-height: 1920px; /* Limit the maximum height to 1920px */
+  object-fit: contain; /* Ensure the image stays contained within the box */
+  transition: opacity 0.5s ease;
+}
+
 body {
   margin: 0;
   padding: 0;

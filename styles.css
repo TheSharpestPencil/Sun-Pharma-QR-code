@@ -45,7 +45,7 @@ body {
 }
 
 /* Mobile Optimization */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
   #event-image {
     width: 100%; /* Full width on smaller devices */
     height: auto; /* Auto-adjust height */

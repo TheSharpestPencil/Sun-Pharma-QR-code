@@ -17,40 +17,57 @@ body {
   display: flex;
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  width: 100%; /* Use full width of the screen */
-  height: 1920px; /* Fixed height of 1920px */
+  width: 100%; /* Full width of the screen */
+  height: 100%; /* Full height of the screen */
   position: absolute;
 }
 
 #event-image {
-  width: 100%; /* Set width to 100% of the container (full screen width) */
-  height: auto; /* Let the height adjust based on aspect ratio */
-  max-height: 1920px; /* Restrict height to 1920px to avoid overflow */
-  object-fit: contain; /* Ensure image retains its aspect ratio */
+  width: 100%; /* Full width of the container (responsive) */
+  height: 100%; /* Full height of the container (responsive) */
+  object-fit: cover; /* Ensure the image covers the entire container */
   transition: opacity 0.5s ease;
   display: block; /* Block element for proper centering */
 }
 
-/* Agenda Section */
-#agenda-container {
-  display: none; /* Hidden initially */
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto; /* Allow vertical scrolling */
-  text-align: center;
-  background-color: black;
-}
-
-#agenda-image {
-  max-width: 100%; /* Fit width */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* Mobile Optimization */
-@media screen and (max-width: 768px) {
+/* Mobile Optimization for all Screen Sizes */
+@media screen and (max-width: 320px) {
   #event-image {
-    width: 100%; /* Full width on mobile */
-    max-height: 80vh; /* Restrict height to fit within mobile viewport */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Full width on very small screens */
+    height: 100%; /* Full height on very small screens */
+    object-fit: cover; /* Ensure the image covers the container */
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  #event-image {
+    width: 100%; /* Full width on small screens */
+    height: 100%; /* Full height on small screens */
+    object-fit: cover; /* Ensure the image covers the container */
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #event-image {
+    width: 100%; /* Full width on medium screens */
+    height: 100%; /* Full height on medium screens */
+    object-fit: cover; /* Ensure the image covers the container */
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #event-image {
+    width: 100%; /* Full width on large screens */
+    height: 100%; /* Full height on large screens */
+    object-fit: cover; /* Ensure the image covers the container */
+  }
+}
+
+/* Landscape Mode Adjustments (For all screen sizes) */
+@media screen and (orientation: landscape) {
+  #event-image {
+    width: 100%; /* Full width on landscape mode */
+    height: 100%; /* Full height on landscape mode */
+    object-fit: cover; /* Ensure the image covers the container */
   }
 }

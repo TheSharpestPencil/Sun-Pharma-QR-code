@@ -4,11 +4,11 @@ body {
   padding: 0;
   background-color: #000; /* Keep background black */
   overflow: hidden;
-  height: 100vh;
-  width: 100vw;
+  height: 100vh; /* Use full height of the viewport */
+  width: 100vw; /* Use full width of the viewport */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Center content vertically */
   position: relative;
 }
 
@@ -16,19 +16,18 @@ body {
 #image-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%; /* Use the full height of the viewport */
-  width: 100%; /* Use the full width of the viewport */
+  align-items: center; /* Vertically center the image */
+  height: auto; /* Let the container height adjust based on content */
+  width: 100%; /* Full width */
   position: absolute;
 }
 
 #event-image {
   max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  max-height: 80vh; /* Make sure it doesn't overflow vertically */
+  object-fit: contain; /* Maintain aspect ratio */
   transition: opacity 0.5s ease;
-  display: block; /* Ensures the image is treated as a block element for proper centering */
-  margin: auto; /* Ensures the image is centered horizontally and vertically */
+  display: block; /* Block element for centering */
 }
 
 /* Agenda Section */
@@ -50,7 +49,7 @@ body {
 @media screen and (max-width: 768px) {
   #event-image {
     width: 100%;
-    height: auto;
-    max-height: 80vh; /* Restrict height for smaller devices to keep content fitting well */
+    max-height: 80vh; /* Limit the height for smaller devices */
+    height: auto; /* Maintain aspect ratio */
   }
 }

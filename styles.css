@@ -30,40 +30,25 @@ body {
   transition: opacity 0.5s ease;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #000; /* Keep the background black */
-  overflow: hidden;
-  height: 100vh;
+/* Agenda Section */
+#agenda-container {
+  display: none; /* Hidden initially */
   width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  overflow-y: auto; /* Allow vertical scrolling */
+  text-align: center;
+  background-color: black;
 }
 
-#image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  position: relative; /* To hold images in the same position */
+#agenda-image {
+  max-width: 100%; /* Fit width */
+  height: auto; /* Maintain aspect ratio */
 }
 
-#event-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  opacity: 1;  /* Initially visible */
-  position: absolute; /* Keep the images stacked on top of each other */
-  transition: opacity 0.5s ease; /* Apply the fade effect */
-}
-
-/* Mobile-first approach for smartphones */
+/* Mobile Optimization */
 @media screen and (max-width: 768px) {
   #event-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Full width on smaller devices */
+    height: auto; /* Auto-adjust height */
   }
 }

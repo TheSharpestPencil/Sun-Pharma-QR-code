@@ -20,8 +20,8 @@ const EVENT_CONFIG = {
     { src: 'Group 1 (11).jpg', duration: 7500 },
     { src: 'Group 1 (12).jpg', duration: 7500 },
     { src: 'Team rules_01.jpg', duration: 7500 },
-    { src: 'Happy birthday_02.jpg', duration: 6000 }, // ✅ Fixed missing comma
-    { src: '321909 Conference Agenda_V5_Monday.jpg' } // ✅ Marked as agenda
+    { src: 'Happy birthday_02.jpg', duration: 6000 },
+    { src: '321909 Conference Agenda_V5_Monday.jpg' }
   ],
   '2025-04-05': [
     { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
@@ -53,7 +53,7 @@ const elements = {
   imageContainer: document.getElementById('image-container'),
   agendaContainer: Object.assign(document.createElement('div'), {
     id: 'agenda-container',
-    style: 'overflow-y:scroll; height:100vh; display:none;'
+    style: 'height:100vh; display:none;'
   }),
   agendaImage: Object.assign(document.createElement('img'), {
     id: 'agenda-image',
@@ -83,20 +83,6 @@ function createSchedule(date) {
     ? [...EVENT_CONFIG.images[formattedDate]]
     : [{ src: EVENT_CONFIG.defaultImage, duration: EVENT_CONFIG.defaultDuration }];
 
-  // Handle April 8th logic
-  if (formattedDate === '2025-04-08') {
-    const isAfternoon = date.getHours() >= 12;
-    const additionalItems = isAfternoon ? [
-      { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true,}
-    ] : [
-      { src: 'welcome letter_V4.jpg', duration: 60000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true, }
-    ];
-    
-    schedule.splice(1, 0, ...additionalItems);
-  }
-
   return schedule.map(item => (Object.assign({
     duration: item.duration || EVENT_CONFIG.defaultDuration,
   }, item)));
@@ -121,7 +107,6 @@ class Slideshow {
     if (this.currentIndex >= this.schedule.length) return;
 
     const item = this.schedule[this.currentIndex++];
-
     this.displayItem(item);
     this.timeoutId = setTimeout(() => this.showNextItem(), item.duration);
   }
@@ -131,7 +116,6 @@ class Slideshow {
       elements.imageContainer.style.display = 'none';
       elements.agendaContainer.style.display = 'block';
       elements.agendaImage.src = item.src;
-      elements.agendaContainer.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       elements.imageContainer.style.display = 'flex';
       elements.agendaContainer.style.display = 'none';

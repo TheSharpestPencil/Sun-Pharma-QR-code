@@ -17,15 +17,15 @@ body {
   display: flex;
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  width: 100vw; /* Full width of the screen */
-  height: 100vh; /* Full height of the screen */
+  width: 100%; /* Full width of the screen */
+  height: 100%; /* Full height of the screen */
   position: absolute;
 }
 
 #event-image {
   width: 100vw; /* Full width of the screen */
   height: 100vh; /* Full height of the screen */
-  object-fit: cover; /* Ensures image covers entire container without distortion */
+  object-fit: cover; /* Ensure the image covers the entire container without distortion */
   transition: opacity 0.5s ease;
   display: block; /* Block element for proper centering */
 }
@@ -33,9 +33,9 @@ body {
 /* Mobile Optimization */
 @media screen and (max-width: 768px) {
   #event-image {
-    width: 100vw; /* Ensure full width on small devices */
-    height: 100vh; /* Ensure full height on small devices */
-    object-fit: cover; /* Ensure image maintains aspect ratio and covers screen */
+    width: 100vw; /* Ensure full width on smaller devices */
+    height: 100vh; /* Ensure full height on smaller devices */
+    object-fit: cover; /* Image fills the container, maintaining aspect ratio */
   }
 }
 

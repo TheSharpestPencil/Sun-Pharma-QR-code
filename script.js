@@ -1,42 +1,56 @@
 // Event configuration
 const EVENT_CONFIG = {
-  startDate: '2025-03-31', // Monday
-  endDate: '2025-04-04',   // Friday
+  startDate: '2025-04-04',
+  endDate: '2025-04-08',
   images: {
-    '2025-03-31': [
-      'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif',
-      'Day 1.jpg',
-      'Agenda-1.jpg',
-      'Ruans-Birthday-Message.jpg'
+    '2025-04-04': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+      { src: 'welcome letter_V2.jpg', duration: 4000 },
+      { src: '321909 Conference Agenda_V3.jpg', duration: 6000 },
+      { src: 'Group 1 (1).jpg', duration: 7500 },
+      { src: 'Group 1 (2).jpg', duration: 7500 },
+      { src: 'Group 1 (3).jpg', duration: 7500 },
+      { src: 'rules.jpg', duration: 7500 },
+      { src: 'Happy birthday_02.jpg', duration: 60000 }
     ],
-    '2025-04-01': [
-      'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif',
-      'Day 2.jpg',
-      'Infinte Agenda_test_V2_Page_2.jpg',
-      'bonfire-flames-by-night-combustion-and-flammable-2025-01-27-16-27-56-utc.jpg'
+    '2025-04-05': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+      { src: 'welcome letter_V2.jpg', duration: 10000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true },
+      { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 }
     ],
-    '2025-04-02': [
-      'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif',
-      'Welcome-Letter-3.jpg',
-      'Agenda-3.jpg',
+    '2025-04-06': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+      { src: 'welcome letter_V2.jpg', duration: 40000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
     ],
-    '2025-04-03': [
-      'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif',
-      'Welcome-Letter-4.jpg',
-      'Agenda-4.jpg',
-      'Nitashas-Birthday-Message.jpg'
+    '2025-04-07': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+      { src: 'welcome letter_V2.jpg', duration: 40000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
+    ],
+    '2025-04-08': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
+      { src: 'Happy birthday_01.jpg', duration: 25000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
     ]
   },
-  defaultImage: 'Coming soon message.jpg'
+  defaultImage: 'Coming-soon-message.jpg'
 };
 
 // Elements
-const gifContainer = document.getElementById('gif-container');
-const imageContainer = document.getElementById('image-container');
 const eventImage = document.getElementById('event-image');
-const logoImage = document.getElementById('logo-image'); // Add <img id="logo-image"> to your HTML
+const imageContainer = document.getElementById('image-container');
+const agendaContainer = document.createElement('div');
+const agendaImage = document.createElement('img');
 
-// Function to fetch the current date and show event
+// Set attributes for agenda container
+agendaContainer.id = 'agenda-container';
+agendaImage.id = 'agenda-image';
+agendaContainer.appendChild(agendaImage);
+document.body.appendChild(agendaContainer);
+
+// Initialize function
 function init() {
   fetch('https://worldtimeapi.org/api/timezone/Africa/Johannesburg')
     .then(response => response.json())
@@ -45,66 +59,70 @@ function init() {
       showEvent(currentDate);
     })
     .catch(() => {
-      console.log('Time API failed, using local time.');
+      console.log('Using local time');
       showEvent(new Date());
     });
 }
 
-// Function to display the event for a given date
-function showEvent(date) {
-  const formattedDate = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
-  let images = EVENT_CONFIG.images[formattedDate] || [EVENT_CONFIG.defaultImage];
+// Show event logic
+function showEvent(initialDate) {
+  const formattedDate = initialDate.toISOString().split('T')[0];
+  let schedule = EVENT_CONFIG.images[formattedDate]
+    ? [...EVENT_CONFIG.images[formattedDate]]
+    : [{ src: EVENT_CONFIG.defaultImage, duration: 10000 }];
 
-  // Extract the logo (first image) and remaining images
-  const logo = images[0] || EVENT_CONFIG.defaultImage;
-  let remainingImages = images.slice(1);
-  if (remainingImages.length === 0) {
-    remainingImages = [EVENT_CONFIG.defaultImage];
+  // Get current time in minutes (24-hour format)
+  const currentHours = initialDate.getHours();
+  const currentMinutes = initialDate.getMinutes();
+  const currentTimeInMinutes = currentHours * 60 + currentMinutes;
+  const changeTimeInMinutes = 12 * 60; // 12:00 PM (Noon)
+
+  if (formattedDate === '2025-04-08') {
+    if (currentTimeInMinutes < changeTimeInMinutes) {
+      // Before 12:00 PM (Noon)
+      schedule.splice(1, 0, { src: 'welcome letter_V2.jpg', duration: 60000 });
+      schedule.splice(2, 0, { src: '321909 Conference Agenda_V3.jpg', duration: 60000 });
+    } else {
+      // After 12:00 PM (Noon)
+      schedule.splice(1, 0, { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 });
+      schedule.splice(2, 0, { src: '321909 Conference Agenda_V3.jpg', duration: 60000 });
+    }
   }
 
-  // Set up the logo display
-  logoImage.src = logo;
-  logoImage.onload = () => {
-    // Show logo container first
-    gifContainer.style.opacity = '1';
-    gifContainer.style.visibility = 'visible';
-    imageContainer.style.opacity = '0';
-    imageContainer.style.visibility = 'hidden';
+  let currentIndex = 0;
 
-    // Transition to images after 2 seconds (GIF logo)
-    setTimeout(() => {
-      gifContainer.style.opacity = '0';
-      gifContainer.style.visibility = 'hidden';
-      imageContainer.style.opacity = '1';
-      imageContainer.style.visibility = 'visible';
+  function processNextItem() {
+    if (currentIndex >= schedule.length) return;
 
-      let index = 0;
-      
-      function cycleImages() {
-        if (index < remainingImages.length) {
-          eventImage.src = remainingImages[index];
-          eventImage.onerror = () => {
-            eventImage.src = EVENT_CONFIG.defaultImage;
-          };
-          index++;
-          setTimeout(cycleImages, 10000); // Transition every 2 seconds
-        } else {
-          // Restart image cycle if all images have been shown
-          index = 0;
-          setTimeout(cycleImages, 2000); // Restart the cycle
-        }
-      }
+    const item = schedule[currentIndex];
 
-      // Start cycling through remaining images
-      cycleImages();
-    }, 10000); // Delay before transitioning to main images
-  };
+    if (item.isAgenda) {
+      // Show agenda mode
+      imageContainer.style.display = 'none';
+      agendaContainer.style.display = 'block';
+      agendaImage.src = item.src;
+      agendaImage.onload = () => {
+        agendaContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    } else {
+      // Normal slideshow mode
+      imageContainer.style.display = 'flex';
+      agendaContainer.style.display = 'none';
+      eventImage.src = item.src;
+      eventImage.onerror = () => {
+        eventImage.src = EVENT_CONFIG.defaultImage;
+      };
 
-  // Error handling for logo image
-  logoImage.onerror = () => {
-    logoImage.src = EVENT_CONFIG.defaultImage;
-  };
+      // Schedule next item
+      setTimeout(processNextItem, item.duration);
+    }
+
+    currentIndex++;
+  }
+
+  // Start processing
+  processNextItem();
 }
 
-// Start the show
+// Initialize
 window.onload = init;

@@ -24,7 +24,8 @@ body {
 #event-image {
   width: 100%; /* Always take full width of the screen */
   height: auto; /* Adjust height to maintain aspect ratio */
-  max-height: 100%; /* Ensure the height does not exceed the screen height */
+  max-width: 1080px; /* Limit the maximum width to 1080px */
+  max-height: 1920px; /* Limit the maximum height to 1920px */
   object-fit: contain; /* Ensure the image stays contained within the box */
   transition: opacity 0.5s ease;
 }
@@ -45,7 +46,7 @@ body {
 }
 
 /* Mobile Optimization */
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1080x) {
   #event-image {
     width: 100%; /* Full width on smaller devices */
     height: auto; /* Auto-adjust height */

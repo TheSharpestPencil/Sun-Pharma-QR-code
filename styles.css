@@ -4,31 +4,31 @@ body {
   padding: 0;
   background-color: #000; /* Keep background black */
   overflow: hidden;
-  height: 100vh; /* Use full height of the viewport */
-  width: 100vw; /* Use full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  width: 100vw; /* Full width of the viewport */
   display: flex;
-  justify-content: center;
-  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   position: relative;
 }
 
 /* Regular Image Slideshow */
 #image-container {
   display: flex;
-  justify-content: center;
-  align-items: center; /* Vertically center the image */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
   width: 100%; /* Use full width of the screen */
-  height: 1920px; /* Fix height to 1920px */
+  height: 1920px; /* Fixed height of 1920px */
   position: absolute;
 }
 
 #event-image {
-  width: 100%; /* Full width of the container */
-  height: auto; /* Let height adjust based on aspect ratio */
-  max-height: 1920px; /* Restrict height to 1920px */
-  object-fit: contain; /* Maintain aspect ratio */
+  width: 100%; /* Set width to 100% of the container (full screen width) */
+  height: auto; /* Let the height adjust based on aspect ratio */
+  max-height: 1920px; /* Restrict height to 1920px to avoid overflow */
+  object-fit: contain; /* Ensure image retains its aspect ratio */
   transition: opacity 0.5s ease;
-  display: block; /* Block element for centering */
+  display: block; /* Block element for proper centering */
 }
 
 /* Agenda Section */
@@ -50,8 +50,7 @@ body {
 @media screen and (max-width: 768px) {
   #event-image {
     width: 100%; /* Full width on mobile */
-    max-height: 80vh; /* Restrict height on smaller devices */
+    max-height: 80vh; /* Restrict height to fit within mobile viewport */
     height: auto; /* Maintain aspect ratio */
   }
 }
-

@@ -64,7 +64,7 @@ const elements = {
 document.body.appendChild(elements.agendaContainer);
 elements.agendaContainer.appendChild(elements.agendaImage);
 
-// Improved time handling with fallback
+// Improved time handling
 async function getCurrentTime() {
   try {
     const response = await fetch('https://worldtimeapi.org/api/timezone/Africa/Johannesburg');
@@ -79,13 +79,8 @@ async function getCurrentTime() {
 // Enhanced schedule processing
 function createSchedule(date) {
   const formattedDate = date.toISOString().split('T')[0];
-  let schedule = EVENT_CONFIG.images[formattedDate] 
-    ? [...EVENT_CONFIG.images[formattedDate]]
-    : [{ src: EVENT_CONFIG.defaultImage, duration: EVENT_CONFIG.defaultDuration }];
-
-  return schedule.map(item => (Object.assign({
-    duration: item.duration || EVENT_CONFIG.defaultDuration,
-  }, item)));
+  let schedule = EVENT_CONFIG.images[formattedDate] || [];
+  return schedule.map(item => (Object.assign({ duration: item.duration }, item)));
 }
 
 // Improved slideshow controller
@@ -120,18 +115,7 @@ class Slideshow {
       elements.imageContainer.style.display = 'flex';
       elements.agendaContainer.style.display = 'none';
       elements.eventImage.src = item.src;
-      elements.eventImage.onerror = () => {
-        elements.eventImage.src = EVENT_CONFIG.defaultImage;
-      };
     }
-  }
-
-  reset() {
-    clearTimeout(this.timeoutId);
-    this.currentIndex = 0;
-    elements.imageContainer.style.display = 'flex';
-    elements.agendaContainer.style.display = 'none';
-    elements.eventImage.src = EVENT_CONFIG.defaultImage;
   }
 }
 

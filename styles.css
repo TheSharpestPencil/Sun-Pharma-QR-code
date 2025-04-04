@@ -9,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 /* Regular Image Slideshow */
@@ -16,8 +17,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%; /* Use the full height of the viewport */
+  width: 100%; /* Use the full width of the viewport */
   position: absolute;
 }
 
@@ -26,6 +27,8 @@ body {
   max-height: 100%;
   object-fit: contain;
   transition: opacity 0.5s ease;
+  display: block; /* Ensures the image is treated as a block element for proper centering */
+  margin: auto; /* Ensures the image is centered horizontally and vertically */
 }
 
 /* Agenda Section */
@@ -48,5 +51,6 @@ body {
   #event-image {
     width: 100%;
     height: auto;
+    max-height: 80vh; /* Restrict height for smaller devices to keep content fitting well */
   }
 }

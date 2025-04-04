@@ -1,141 +1,158 @@
-// Event configuration
+// Enhanced event configuration with agenda duration
 const EVENT_CONFIG = {
-  startDate: '2025-04-04',  
-  endDate: '2025-04-08',    
-  images: {
-    '2025-04-04': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V2.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V3_Monday.jpg', duration: 60000 },
-      { src: 'Group 1 (1).jpg', duration: 7500 },
-      { src: 'Group 1 (2).jpg', duration: 7500 },
-      { src: 'Group 1 (3).jpg', duration: 7500 },
-      { src: 'Group 1 (4).jpg', duration: 7500 },
-      { src: 'Group 1 (5).jpg', duration: 7500 },
-      { src: 'Group 1 (6).jpg', duration: 7500 },
-      { src: 'Group 1 (7).jpg', duration: 7500 },
-      { src: 'Group 1 (8).jpg', duration: 7500 },
-      { src: 'Group 1 (9).jpg', duration: 7500 },
-      { src: 'Group 1 (10).jpg', duration: 7500 },
-      { src: 'Group 1 (11).jpg', duration: 7500 },
-      { src: 'Group 1 (12).jpg', duration: 7500 },
-      { src: 'Team rules_01.jpg', duration: 7500 },
-      { src: 'Happy birthday_02.jpg', duration: 6000 }, // ✅ Fixed missing comma
-      { src: '321909 Conference Agenda_V3_Monday.jpg' } // ✅ Marked as agenda
-    ],
-    '2025-04-05': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V2.jpg', duration: 10000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true },
-      { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 }
-    ],
-    '2025-04-06': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V2.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
-    ],
-    '2025-04-07': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V2.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
-    ],
-    '2025-04-08': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
-      { src: 'Happy birthday_01.jpg', duration: 25000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
-    ]
-  },
-  defaultImage: 'Coming-soon-message.jpg'
+  startDate: '2025-04-04',
+  endDate: '2025-04-08',
+  images: {     '2025-04-04': [
+    { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+    { src: 'welcome letter_V4.jpg', duration: 40000 },
+    { src: '321909 Conference Agenda_V3_Monday.jpg', duration: 60000 },
+    { src: 'Team building event.jpg', duration: 7500 },
+    { src: 'Group 1 (1).jpg', duration: 7500 },
+    { src: 'Group 1 (2).jpg', duration: 7500 },
+    { src: 'Group 1 (3).jpg', duration: 7500 },
+    { src: 'Group 1 (4).jpg', duration: 7500 },
+    { src: 'Group 1 (5).jpg', duration: 7500 },
+    { src: 'Group 1 (6).jpg', duration: 7500 },
+    { src: 'Group 1 (7).jpg', duration: 7500 },
+    { src: 'Group 1 (8).jpg', duration: 7500 },
+    { src: 'Group 1 (9).jpg', duration: 7500 },
+    { src: 'Group 1 (10).jpg', duration: 7500 },
+    { src: 'Group 1 (11).jpg', duration: 7500 },
+    { src: 'Group 1 (12).jpg', duration: 7500 },
+    { src: 'Team rules_01.jpg', duration: 7500 },
+    { src: 'Happy birthday_02.jpg', duration: 6000 }, // ✅ Fixed missing comma
+    { src: '321909 Conference Agenda_V5_Monday.jpg' } // ✅ Marked as agenda
+  ],
+  '2025-04-05': [
+    { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+    { src: 'welcome letter_V4.jpg', duration: 10000 },
+    { src: '321909 Conference Agenda_V3.jpg', isAgenda: true },
+    { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 }
+  ],
+  '2025-04-06': [
+    { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+    { src: 'welcome letter_V4.jpg', duration: 40000 },
+    { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
+  ],
+  '2025-04-07': [
+    { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+    { src: 'welcome letter_V4.jpg', duration: 40000 },
+    { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
+  ],
+  '2025-04-08': [
+    { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
+    { src: 'Happy birthday_01.jpg', duration: 25000 },
+    { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
+  ]
+},
 };
 
-// Elements
-const eventImage = document.getElementById('event-image');
-const imageContainer = document.getElementById('image-container');
-const agendaContainer = document.createElement('div');
-const agendaImage = document.createElement('img');
+// Improved element handling
+const elements = {
+  eventImage: document.getElementById('event-image'),
+  imageContainer: document.getElementById('image-container'),
+  agendaContainer: Object.assign(document.createElement('div'), {
+    id: 'agenda-container',
+    style: 'overflow-y:scroll; height:100vh; display:none;'
+  }),
+  agendaImage: Object.assign(document.createElement('img'), {
+    id: 'agenda-image',
+    style: 'width:100%; display:block;'
+  })
+};
 
-// Set attributes for agenda container
-agendaContainer.id = 'agenda-container';
-agendaContainer.style.overflowY = 'scroll'; // Enable vertical scrolling
-agendaContainer.style.height = '100vh'; // Full height
-agendaContainer.style.display = 'none'; // Hide initially
+document.body.appendChild(elements.agendaContainer);
+elements.agendaContainer.appendChild(elements.agendaImage);
 
-agendaImage.id = 'agenda-image';
-agendaImage.style.width = '100%'; // Fit screen width
-agendaContainer.appendChild(agendaImage);
-document.body.appendChild(agendaContainer);
-
-function init() {
-  fetch('https://worldtimeapi.org/api/timezone/Africa/Johannesburg')
-    .then(response => response.json())
-    .then(data => {
-      const currentDate = new Date(data.datetime);
-      showEvent(currentDate);
-    })
-    .catch(() => {
-      console.log('Using local time');
-      showEvent(new Date());
-    });
+// Improved time handling with fallback
+async function getCurrentTime() {
+  try {
+    const response = await fetch('https://worldtimeapi.org/api/timezone/Africa/Johannesburg');
+    const data = await response.json();
+    return new Date(data.datetime);
+  } catch (error) {
+    console.warn('Using local time:', error);
+    return new Date();
+  }
 }
 
-function showEvent(initialDate) {
-  const formattedDate = initialDate.toISOString().split('T')[0];
-  const schedule = EVENT_CONFIG.images[formattedDate] 
-    ? [...EVENT_CONFIG.images[formattedDate]] 
-    : [{ src: EVENT_CONFIG.defaultImage, duration: 10000 }];
+// Enhanced schedule processing
+function createSchedule(date) {
+  const formattedDate = date.toISOString().split('T')[0];
+  let schedule = EVENT_CONFIG.images[formattedDate] 
+    ? [...EVENT_CONFIG.images[formattedDate]]
+    : [{ src: EVENT_CONFIG.defaultImage, duration: EVENT_CONFIG.defaultDuration }];
 
-  // ✅ Fix: Define current time variables
-  const currentHours = initialDate.getHours();
-  const currentMinutes = initialDate.getMinutes();
-  const currentTimeInMinutes = currentHours * 60 + currentMinutes;
-  const changeTimeInMinutes = 12 * 60; // ✅ Noon (12:00 PM)
-
+  // Handle April 8th logic
   if (formattedDate === '2025-04-08') {
-    if (currentTimeInMinutes < changeTimeInMinutes) {
-      // ✅ Before 12:00 PM (Noon)
-      schedule.splice(1, 0, { src: 'welcome letter_V2.jpg', duration: 60000 });
-      schedule.splice(2, 0, { src: '321909 Conference Agenda_V3.jpg', duration: 60000 });
-    } else {
-      // ✅ After 12:00 PM (Noon)
-      schedule.splice(1, 0, { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 });
-      schedule.splice(2, 0, { src: '321909 Conference Agenda_V3.jpg', duration: 60000 });
-    }
+    const isAfternoon = date.getHours() >= 12;
+    const additionalItems = isAfternoon ? [
+      { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true,}
+    ] : [
+      { src: 'welcome letter_V4.jpg', duration: 60000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true, }
+    ];
+    
+    schedule.splice(1, 0, ...additionalItems);
   }
 
-  let currentIndex = 0;
-
-  function processNextItem() {
-    if (currentIndex >= schedule.length) return;
-
-    const item = schedule[currentIndex];
-
-    if (item.isAgenda) {
-      // ✅ Switch to agenda mode
-      imageContainer.style.display = 'none';
-      agendaContainer.style.display = 'block';
-      agendaImage.src = item.src;
-      agendaImage.onload = () => {
-        agendaContainer.scrollTo({ top: 0, behavior: 'smooth' });
-      };
-    } else {
-      // ✅ Normal slideshow mode
-      imageContainer.style.display = 'flex';
-      agendaContainer.style.display = 'none';
-      eventImage.src = item.src;
-      eventImage.onerror = () => {
-        eventImage.src = EVENT_CONFIG.defaultImage;
-      };
-
-      // ✅ Schedule next item
-      setTimeout(processNextItem, item.duration);
-    }
-
-    currentIndex++;
-  }
-
-  // ✅ Start processing
-  processNextItem();
+  return schedule.map(item => (Object.assign({
+    duration: item.duration || EVENT_CONFIG.defaultDuration,
+  }, item)));
 }
 
-// ✅ Initialize
-window.onload = init;
+// Improved slideshow controller
+class Slideshow {
+  constructor() {
+    this.currentIndex = 0;
+    this.timeoutId = null;
+    this.schedule = [];
+  }
+
+  async start() {
+    const currentDate = await getCurrentTime();
+    this.schedule = createSchedule(currentDate);
+    this.showNextItem();
+  }
+
+  showNextItem() {
+    clearTimeout(this.timeoutId);
+    if (this.currentIndex >= this.schedule.length) return;
+
+    const item = this.schedule[this.currentIndex++];
+
+    this.displayItem(item);
+    this.timeoutId = setTimeout(() => this.showNextItem(), item.duration);
+  }
+
+  displayItem(item) {
+    if (item.isAgenda) {
+      elements.imageContainer.style.display = 'none';
+      elements.agendaContainer.style.display = 'block';
+      elements.agendaImage.src = item.src;
+      elements.agendaContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      elements.imageContainer.style.display = 'flex';
+      elements.agendaContainer.style.display = 'none';
+      elements.eventImage.src = item.src;
+      elements.eventImage.onerror = () => {
+        elements.eventImage.src = EVENT_CONFIG.defaultImage;
+      };
+    }
+  }
+
+  reset() {
+    clearTimeout(this.timeoutId);
+    this.currentIndex = 0;
+    elements.imageContainer.style.display = 'flex';
+    elements.agendaContainer.style.display = 'none';
+    elements.eventImage.src = EVENT_CONFIG.defaultImage;
+  }
+}
+
+// Initialize slideshow
+window.addEventListener('DOMContentLoaded', () => {
+  const slideshow = new Slideshow();
+  slideshow.start();
+});

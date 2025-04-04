@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Event Slideshow</title>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Service Worker Registration for Offline Support -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </head>
+
 <body>
 
   <!-- Regular Slideshow Container -->
   <div id="image-container">
-    <img id="event-image" src="" alt="Event Image">
+    <img id="event-image" src="placeholder.jpg" 
+         data-src="actual-image.jpg" 
+         loading="lazy" 
+         decoding="async" 
+         class="mobile-optimize" 
+         alt="Event Image">
   </div>
 
   <!-- Agenda Container (Hidden by default) -->
@@ -18,6 +32,23 @@
     <img id="agenda-image" src="321909 Conference Agenda_V3.jpg" alt="Agenda">
   </div>
 
+  <!-- Log mobile performance metrics -->
+  <script>
+    window.addEventListener('load', function() {
+      const timing = performance.timing;
+      console.log('Mobile load time:', timing.loadEventEnd - timing.navigationStart);
+    });
+  </script>
+
+  <!-- Prevent default touch behaviors for smoother interactions -->
+  <script>
+    document.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+  </script>
+
   <script src="Test_script.js"></script>
+
 </body>
+
 </html>

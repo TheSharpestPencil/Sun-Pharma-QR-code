@@ -28,8 +28,18 @@ body {
   object-fit: contain;
   image-rendering: optimizeQuality;
   transform: translateZ(0); /* Enables GPU acceleration */
-  will-change: opacity, transform;
+  will-change: opacity;
+  opacity: 0;
   transition: opacity 1s ease-in-out;
+}
+
+#event-image.fade-in {
+  opacity: 1;
+}
+
+#event-image.no-transition {
+  opacity: 1;
+  transition: none;
 }
 
 /* GIF Container */
@@ -43,9 +53,14 @@ body {
   justify-content: center;
   align-items: center;
   background: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+}
+
+#gif-container.visible {
   opacity: 1;
   visibility: visible;
-  transition: opacity 1s ease, visibility 1s ease;
 }
 
 #gif {

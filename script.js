@@ -108,13 +108,39 @@ function showEvent(initialDate) {
       // Normal slideshow mode
       imageContainer.style.display = 'flex';
       agendaContainer.style.display = 'none';
-      eventImage.src = item.src;
-      eventImage.onerror = () => {
-        eventImage.src = EVENT_CONFIG.defaultImage;
-      };
-
-      // Schedule next item
-      setTimeout(processNextItem, item.duration);
+      
+      // Check if this is the GIF file that should not have transitions
+      if (item.src === 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif') {
+        eventImage.classList.add('no-transition');
+        eventImage.src = item.src;
+        setTimeout(processNextItem, item.duration);
+      } else {
+        // Remove no-transition class if it exists
+        eventImage.classList.remove('no-transition');
+        
+        // Fade out current image
+        eventImage.classList.remove('fade-in');
+        
+        // Wait for fade out to complete
+        setTimeout(() => {
+          eventImage.src = item.src;
+          eventImage.onload = () => {
+            // Fade in new image
+            eventImage.classList.add('fade-in');
+            
+            // Schedule next item
+            setTimeout(() => {
+              // Fade out before next image
+              eventImage.classList.remove('fade-in');
+              setTimeout(processNextItem, 1000); // Wait for fade out
+            }, item.duration - 1000); // Subtract fade out time
+          };
+          eventImage.onerror = () => {
+            eventImage.src = EVENT_CONFIG.defaultImage;
+            eventImage.classList.add('fade-in');
+          };
+        }, 1000); // Wait for fade out to complete
+      }
     }
 
     currentIndex++;

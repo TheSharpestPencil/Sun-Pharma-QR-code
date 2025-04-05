@@ -3,14 +3,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <title>Event Slideshow</title>
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Preload critical assets -->
+  <link rel="preload" href="Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif" as="image">
+  
   <!-- Service Worker Registration for Offline Support -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(console.error);
+      });
     }
   </script>
 </head>
@@ -18,20 +26,20 @@
 <body>
 
   <!-- Slideshow Controls -->
-  <div id="controls">
-    <button id="prev-btn" class="control-btn">Previous</button>
-    <button id="next-btn" class="control-btn">Next</button>
-    <button id="download-btn" class="control-btn">Download</button>
+  <div id="controls" class="controls-hidden">
+    <button id="prev-btn" class="control-btn" aria-label="Previous">◀</button>
+    <button id="next-btn" class="control-btn" aria-label="Next">▶</button>
+    <button id="download-btn" class="control-btn" aria-label="Download">⬇</button>
   </div>
 
   <!-- Regular Slideshow Container -->
   <div id="image-container">
-    <img id="event-image" alt="Event Image">
+    <img id="event-image" alt="Event Image" loading="eager" decoding="async">
   </div>
 
   <!-- Agenda Container (Hidden by default) -->
   <div id="agenda-container">
-    <img id="agenda-image" src="321909 Conference Agenda_V3.jpg" alt="Agenda">
+    <img id="agenda-image" alt="Agenda" loading="lazy" decoding="async">
   </div>
 
   <!-- Log mobile performance metrics -->
@@ -44,7 +52,7 @@
 
   <!-- Prevent default touch behaviors for smoother interactions -->
 
-  <script src="Test_script.js"></script>
+  <script src="Test_script.js" defer></script>
 
 </body>
 

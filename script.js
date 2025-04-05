@@ -109,38 +109,37 @@ function showEvent(initialDate) {
       imageContainer.style.display = 'flex';
       agendaContainer.style.display = 'none';
       
-      // Check if this is the GIF file that should not have transitions
-      if (item.src === 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif') {
-        eventImage.classList.add('no-transition');
-        eventImage.src = item.src;
-        setTimeout(processNextItem, item.duration);
-      } else {
-        // Remove no-transition class if it exists
-        eventImage.classList.remove('no-transition');
+      // Remove any existing classes
+      eventImage.classList.remove('fade-in', 'no-transition');
+      
+      // Set the source and handle loading
+      eventImage.src = item.src;
+      
+      // Handle the image load
+      eventImage.onload = () => {
+        // If it's the GIF, add no-transition class
+        if (item.src === 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif') {
+          eventImage.classList.add('no-transition');
+        } else {
+          // For other images, add fade-in class
+          eventImage.classList.add('fade-in');
+        }
         
-        // Fade out current image
-        eventImage.classList.remove('fade-in');
-        
-        // Wait for fade out to complete
+        // Schedule next item
         setTimeout(() => {
-          eventImage.src = item.src;
-          eventImage.onload = () => {
-            // Fade in new image
-            eventImage.classList.add('fade-in');
-            
-            // Schedule next item
-            setTimeout(() => {
-              // Fade out before next image
-              eventImage.classList.remove('fade-in');
-              setTimeout(processNextItem, 1000); // Wait for fade out
-            }, item.duration - 1000); // Subtract fade out time
-          };
-          eventImage.onerror = () => {
-            eventImage.src = EVENT_CONFIG.defaultImage;
-            eventImage.classList.add('fade-in');
-          };
-        }, 1000); // Wait for fade out to complete
-      }
+          if (item.src === 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif') {
+            processNextItem();
+          } else {
+            eventImage.classList.remove('fade-in');
+            setTimeout(processNextItem, 1000);
+          }
+        }, item.duration);
+      };
+      
+      eventImage.onerror = () => {
+        eventImage.src = EVENT_CONFIG.defaultImage;
+        eventImage.classList.add('fade-in');
+      };
     }
 
     currentIndex++;
@@ -150,5 +149,5 @@ function showEvent(initialDate) {
   processNextItem();
 }
 
-// Initialize
-window.onload = init;
+// Initialize when the page loads
+window.addEventListener('load', init);

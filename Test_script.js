@@ -1,9 +1,9 @@
 // Enhanced event configuration with agenda duration
 const EVENT_CONFIG = {
-  startDate: '2025-04-05',
-  endDate: '2025-04-09',
+  startDate: '2025-04-06',
+  endDate: '2025-04-10',
   images: {
-    '2025-04-05': [
+    '2025-04-06': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 40000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
@@ -24,16 +24,11 @@ const EVENT_CONFIG = {
       { src: 'Happy birthday_02.jpg', duration: 6000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg' }
     ],
-    '2025-04-06': [
+    '2025-04-07': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 10000 },
       { src: '321909 Conference Agenda_V3.jpg', isAgenda: true },
       { src: '321909-Conference-Name-Tag_V2.gif', duration: 45000 }
-    ],
-    '2025-04-07': [
-      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V4.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
     ],
     '2025-04-08': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
@@ -41,6 +36,11 @@ const EVENT_CONFIG = {
       { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
     ],
     '2025-04-09': [
+      { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
+      { src: 'welcome letter_V4.jpg', duration: 40000 },
+      { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
+    ],
+    '2025-04-10': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
       { src: 'Happy birthday_01.jpg', duration: 25000 },
       { src: '321909 Conference Agenda_V3.jpg', isAgenda: true }
@@ -77,7 +77,7 @@ function createSchedule(date) {
   const formattedDate = date.toISOString().split('T')[0];
   let schedule = EVENT_CONFIG.images[formattedDate] || [];
 
-  if (formattedDate === '2025-04-05') {
+  if (formattedDate === '2025-04-06') {
     const currentTimeInMinutes = date.getHours() * 60 + date.getMinutes();
     const noonInMinutes = 12 * 60; // 12:00 PM (Noon)
     
@@ -111,10 +111,10 @@ function createSchedule(date) {
         { src: 'Group 1 (12).jpg', duration: 7500 },
         { src: 'Team rules_01.jpg', duration: 7500 },
         { src: 'Happy birthday_02.jpg', duration: 6000 },
-        { src: '321909 Conference Agenda_V5_Monday.jpg' },
+        { src: '321909 Conference Agenda_V5_Monday.jpg', },
       ];
     }
-  } else if (formattedDate === '2025-04-09') {
+  } else if (formattedDate === '2025-04-10') {
     const currentTimeInMinutes = date.getHours() * 60 + date.getMinutes();
     const noonInMinutes = 12 * 60; // 12:00 PM (Noon)
     

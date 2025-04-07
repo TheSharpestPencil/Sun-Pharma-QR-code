@@ -3,7 +3,7 @@ const EVENT_CONFIG = {
   startDate: '2025-04-07',
   endDate: '2025-04-11',
   images: {
-    '2025-04-07': [
+    '2025-04-06': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 45000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
@@ -24,11 +24,11 @@ const EVENT_CONFIG = {
       { src: 'Happy birthday_02.jpg', duration: 6000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg' }
     ],
-    '2025-04-08': [
+    '2025-04-07': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 10000 },
+      { src: 'Pop-up-shop--UA-logo-&-message.gif', duration: 45000 },
       { src: '321909 Conference Agenda_V5.jpg', isAgenda: true },
-      { src: 'Pop-up-shop--UA-logo-&-message.gif', duration: 45000 }
     ],
     '2025-04-09': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },

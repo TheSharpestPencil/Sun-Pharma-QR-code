@@ -5,7 +5,7 @@ const EVENT_CONFIG = {
   images: {
     '2025-04-07': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-      { src: 'welcome letter_V4.jpg', duration: 40000 },
+      { src: 'welcome letter_V4.jpg', duration: 45000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
       { src: 'Team building event.jpg', duration: 7500 },
       { src: 'Group 1 (1).jpg', duration: 7500 },
@@ -77,44 +77,7 @@ function createSchedule(date) {
   const formattedDate = date.toISOString().split('T')[0];
   let schedule = EVENT_CONFIG.images[formattedDate] || [];
 
-  if (formattedDate === '2025-04-07') {
-    const currentTimeInMinutes = date.getHours() * 60 + date.getMinutes();
-    const noonInMinutes = 12 * 60; // 12:00 PM (Noon)
-    
-    if (currentTimeInMinutes < noonInMinutes) {
-      // Morning schedule (before 12:00 PM)
-      schedule = [
-        { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-        { src: 'welcome letter_V4.jpg', duration: 4000 },
-        { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 6000 },
-        { src: 'Happy birthday_02.jpg', duration: 6000 },
-        { src: '321909 Conference Agenda_V5_Monday.jpg' }
-      ];
-    } else {
-      // Afternoon schedule (after 12:00 PM)
-      schedule = [
-        { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
-        { src: 'welcome letter_V4.jpg', duration: 40000 },
-        { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
-        { src: 'Team building event.jpg', duration: 7500 },
-        { src: 'Group 1 (1).jpg', duration: 7500 },
-        { src: 'Group 1 (2).jpg', duration: 7500 },
-        { src: 'Group 1 (3).jpg', duration: 7500 },
-        { src: 'Group 1 (4).jpg', duration: 7500 },
-        { src: 'Group 1 (5).jpg', duration: 7500 },
-        { src: 'Group 1 (6).jpg', duration: 7500 },
-        { src: 'Group 1 (7).jpg', duration: 7500 },
-        { src: 'Group 1 (8).jpg', duration: 7500 },
-        { src: 'Group 1 (9).jpg', duration: 7500 },
-        { src: 'Group 1 (10).jpg', duration: 7500 },
-        { src: 'Group 1 (11).jpg', duration: 7500 },
-        { src: 'Group 1 (12).jpg', duration: 7500 },
-        { src: 'Team rules_01.jpg', duration: 7500 },
-        { src: 'Happy birthday_02.jpg', duration: 6000 },
-        { src: '321909 Conference Agenda_V5_Monday.jpg' }
-      ];
-    }
-  } else if (formattedDate === '2025-04-11') {
+  if (formattedDate === '2025-04-11') {
     const currentTimeInMinutes = date.getHours() * 60 + date.getMinutes();
     const noonInMinutes = 12 * 60; // 12:00 PM (Noon)
     

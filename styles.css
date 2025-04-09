@@ -35,6 +35,7 @@ body {
   visibility: visible;
 }
 
+
 #controls.controls-hidden {
   opacity: 0;
   visibility: hidden;

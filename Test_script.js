@@ -27,23 +27,23 @@ const EVENT_CONFIG = {
     '2025-04-08': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 10000 },
-      { src: '321909 Conference Agenda_V5.jpg', isAgenda: true },
+      { src: '321909 Conference Agenda_V6.jpg', isAgenda: true },
       { src: 'Pop-up-shop--UA-logo-&-message.gif', duration: 45000 }
     ],
     '2025-04-09': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V5.jpg', isAgenda: true }
+      { src: '321909 Conference Agenda_V6.jpg', isAgenda: true }
     ],
     '2025-04-10': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 40000 },
-      { src: '321909 Conference Agenda_V5.jpg', isAgenda: true }
+      { src: '321909 Conference Agenda_V6.jpg', isAgenda: true }
     ],
     '2025-04-11': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
       { src: 'Happy birthday_01.jpg', duration: 25000 },
-      { src: '321909 Conference Agenda_V5.jpg', isAgenda: true }
+      { src: '321909 Conference Agenda_V6.jpg', isAgenda: true }
     ]
   },
 };
@@ -86,14 +86,14 @@ function createSchedule(date) {
       schedule = [
         { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
         { src: 'Pop-up-shop--UA-logo-&-message.gif', duration: 45000 },
-        { src: '321909 Conference Agenda_V5.jpg', isAgenda: true }
+        { src: '321909 Conference Agenda_V6.jpg', isAgenda: true }
       ];
     } else {
       // Before 12:00 PM schedule
       schedule = [
         { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 7000 },
         { src: 'welcome letter_V4.jpg', duration: 25000 },
-        { src: '321909 Conference Agenda_V5.jpg', isAgenda: true }
+        { src: '321909 Conference Agenda_V6.jpg', isAgenda: true }
       ];
     }
   }

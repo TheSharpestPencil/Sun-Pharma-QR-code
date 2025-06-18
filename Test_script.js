@@ -22,7 +22,7 @@ const EVENT_CONFIG = {
       { src: 'Group 1 (12).jpg', duration: 7500 },
       { src: 'Team rules_01.jpg', duration: 7500 },
       { src: 'Happy birthday_02.jpg', duration: 6000 },
-      { src: '321909 Conference Agenda_V6.jpg' }
+      { src: '321909 Conference Agenda_V6.jpg',isAgenda: true  }
     ],
     '2025-06-19': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },

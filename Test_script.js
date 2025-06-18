@@ -6,7 +6,7 @@ const EVENT_CONFIG = {
     '2025-06-18': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 45000 },
-      { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
+      { src: '321909 Conference Agenda_V6.jpg', duration: 60000 },
       { src: 'Team building event.jpg', duration: 7500 },
       { src: 'Group 1 (1).jpg', duration: 7500 },
       { src: 'Group 1 (2).jpg', duration: 7500 },
@@ -22,7 +22,7 @@ const EVENT_CONFIG = {
       { src: 'Group 1 (12).jpg', duration: 7500 },
       { src: 'Team rules_01.jpg', duration: 7500 },
       { src: 'Happy birthday_02.jpg', duration: 6000 },
-      { src: '321909 Conference Agenda_V5_Monday.jpg' }
+      { src: '321909 Conference Agenda_V6.jpg' }
     ],
     '2025-06-19': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },

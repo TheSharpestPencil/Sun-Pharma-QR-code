@@ -1,9 +1,9 @@
 // Enhanced event configuration with agenda duration
 const EVENT_CONFIG = {
-  startDate: '2025-04-07',
-  endDate: '2025-04-11',
+  startDate: '2025-06-18',
+  endDate: '2025-06-22',
   images: {
-    '2025-04-07': [
+    '2025-06-18': [
       { src: 'Sun-Pharma-Infinite-Logo-Loop-2.gif_V2.gif', duration: 6000 },
       { src: 'welcome letter_V4.jpg', duration: 45000 },
       { src: '321909 Conference Agenda_V5_Monday.jpg', duration: 60000 },
